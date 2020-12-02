@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import {MemoryCardBlock, MemoryCardBlockProps} from '../app/view/Game/MemoryCardBlock';
 
 export default {
-	title: 'Game/MemoryCardBlock',
+	title: 'Game/Memory Card Block',
 	component: MemoryCardBlock,
 	argTypes: {
 		backgroundColor: { control: 'color' },

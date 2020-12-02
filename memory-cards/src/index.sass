@@ -83,7 +83,6 @@ html, body
       background: whitesmoke
       box-shadow: 0 0 30px rgba(0, 0, 0, .4) inset
       transition: color .4s
-      font-size: 80px
 
     .no_match
       color: #333333
@@ -101,7 +100,7 @@ html, body
   .flip
     transform: rotateY(180deg)
     box-shadow: -2px 2px 4px rgba(0,0,0,.3)
-    cursor: not-allowed
+    cursor: default
 
   .opacity
     transition: opacity .8s
@@ -111,14 +110,26 @@ html, body
     width: calc(25% - 10px)
     height: calc(33.333% - 10px)
 
+    .front-face
+      font-size: 85px
+
   .m-card
     width: calc(20% - 10px)
     height: calc(25% - 10px)
+
+    .front-face
+      font-size: 80px
 
   .l-card
     width: calc(16.666% - 10px)
     height: calc(20% - 10px)
 
+    .front-face
+      font-size: 60px
+
   .test-card
     width: 160px
     height: 200px
+
+    .front-face
+      font-size: 90px
