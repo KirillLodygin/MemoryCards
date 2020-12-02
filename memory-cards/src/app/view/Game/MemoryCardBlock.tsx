@@ -16,7 +16,7 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
 																	card,
 																	flip = false,
 																	win = false,
-																	index = 1,
+																	index,
 																	pair = [],
 																	onClick
 																}) => {

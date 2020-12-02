@@ -59,40 +59,6 @@ html, body
     transform-style: preserve-3d
     transition: transform .5s
 
-  .hover
-    cursor: pointer
-    &:hover
-      transform: scale(0.97)
-      transition: transform .2s
-
-  .flip
-    transform: rotateY(180deg)
-    box-shadow: -2px 2px 4px rgba(0,0,0,.3)
-    cursor: not-allowed
-
-  .opacity
-    transition: opacity .8s
-    opacity: 0
-
-  .s-card
-    width: calc(25% - 10px)
-    height: calc(33.333% - 10px)
-    order: #{random-order($small)}
-
-  .m-card
-    width: calc(20% - 10px)
-    height: calc(25% - 10px)
-    order: #{random-order($medium)}
-
-  .l-card
-    width: calc(16.666% - 10px)
-    height: calc(20% - 10px)
-    order: #{random-order($large)}
-
-  .test-card
-    width: 160px
-    height: 200px
-
     %card-content
       position: absolute
       border-radius: 5px
@@ -125,3 +91,34 @@ html, body
     .math
       color: #FF2800
       text-shadow: 0 0 1px #FF2800
+
+  .hover
+    cursor: pointer
+    &:hover
+      transform: scale(0.97)
+      transition: transform .2s
+
+  .flip
+    transform: rotateY(180deg)
+    box-shadow: -2px 2px 4px rgba(0,0,0,.3)
+    cursor: not-allowed
+
+  .opacity
+    transition: opacity .8s
+    opacity: 0
+
+  .s-card
+    width: calc(25% - 10px)
+    height: calc(33.333% - 10px)
+
+  .m-card
+    width: calc(20% - 10px)
+    height: calc(25% - 10px)
+
+  .l-card
+    width: calc(16.666% - 10px)
+    height: calc(20% - 10px)
+
+  .test-card
+    width: 160px
+    height: 200px

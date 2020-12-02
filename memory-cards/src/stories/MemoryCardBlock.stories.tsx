@@ -16,7 +16,8 @@ const Template: Story<MemoryCardBlockProps> = (args) => <MemoryCardBlock {...arg
 export const TestCard = Template.bind({});
 TestCard.args = {
 	cardsAmount: 1,
-	card: 'f'
+	card: 'f',
+	index: 1
 };
 
 export const WinCard = Template.bind({});
@@ -24,6 +25,7 @@ WinCard.args = {
 	cardsAmount: 1,
 	card: 'g',
 	flip: true,
+	index: 0,
 	pair: [
 		{
 			card: 'g',
