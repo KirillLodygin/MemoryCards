@@ -6,22 +6,20 @@ const shuffle = (arr: Array<string>): Array<string> => {
 	return arr;
 };
 
-export const createGameField = (arr: Array<string>): { card: string, flip: boolean, win: boolean }[] => {
-	return shuffle(arr.concat(arr)).map((item: string) => {
-		return {
-			card: item,
-			flip: false,
-			win: false
-		};
-	});
-};
+export const pickCards = (index: 6 | 10 | 15, test: boolean = false): { card: string, flip: boolean, win: boolean }[] => {
+	let cards = ['A', 'H', 'd', 'f', 'g', 'h', 'i', 'l', 'o', 'e', 's', 'v', 'x', 'y', 'z'];
+	let gameCards: Array<string> = [];
 
-export const createTestField = (arr: Array<string>): { card: string, flip: boolean, win: boolean }[] => {
-	return shuffle(arr.concat(arr)).map((item: string) => {
-		return {
-			card: item,
-			flip: true,
-			win: false
-		};
+	if (index === 15) {
+		gameCards = cards;
+	} else {
+		while (gameCards.length < index) {
+			let i = Math.floor(Math.random() * (index + 1));
+			if (gameCards.indexOf(cards[i]) === -1) gameCards.push(cards[i]);
+		}
+	}
+
+	return shuffle(gameCards.concat(gameCards)).map((item: string) => {
+		return (test) ? {card: item, flip: true, win: false} : {card: item, flip: false, win: false}
 	});
 };
