@@ -11,7 +11,7 @@ export const pickCards = (index: 6 | 10 | 15, test: boolean = false): { card: st
 	let gameCards: Array<string> = [];
 
 	while (gameCards.length < index) {
-		let i = Math.floor(Math.random() * 14);
+		let i = Math.floor(Math.random() * 15);
 		if (gameCards.indexOf(cards[i]) === -1) gameCards.push(cards[i]);
 	}
 
