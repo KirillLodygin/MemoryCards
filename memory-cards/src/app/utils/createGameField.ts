@@ -10,13 +10,9 @@ export const pickCards = (index: 6 | 10 | 15, test: boolean = false): { card: st
 	let cards = ['A', 'H', 'd', 'f', 'g', 'h', 'i', 'l', 'o', 'e', 's', 'v', 'x', 'y', 'z'];
 	let gameCards: Array<string> = [];
 
-	if (index === 15) {
-		gameCards = cards;
-	} else {
-		while (gameCards.length < index) {
-			let i = Math.floor(Math.random() * (index + 1));
-			if (gameCards.indexOf(cards[i]) === -1) gameCards.push(cards[i]);
-		}
+	while (gameCards.length < index) {
+		let i = Math.floor(Math.random() * 14);
+		if (gameCards.indexOf(cards[i]) === -1) gameCards.push(cards[i]);
 	}
 
 	return shuffle(gameCards.concat(gameCards)).map((item: string) => {
