@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import {GameField} from './app/view/Game/GameField';
 import {SelectionBox} from './app/view/SelectionBox/SelectionBox';
 
-export default const App:  React.FC<> = () => {
+export default const App:React.FC<> = () => {
 	return (
 		<Switch>
 			<Route path='/' component={SelectionBox}/>
