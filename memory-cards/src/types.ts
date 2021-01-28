@@ -12,6 +12,12 @@ export interface IAppState {
 	gameField: IGameFieldState
 }
 
+export interface IDispatchPropsType {
+	createCardsSet: typeof actions.createCardsSet,
+	updateGameStory: typeof actions.updateGameStory,
+	prepareNextRound: typeof actions.prepareNextRound
+}
+
 // Actions
 
 /*
