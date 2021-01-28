@@ -10,7 +10,7 @@ const initialArr: { num: 6 | 10 | 15, name: string }[] = [
 ];
 
 export const SelectionBox: React.FC<SelectionBoxProps> = ({cardsSet, createCardsSet}) => {
-	console.log('!!!');
+	console.log('SelectionBox');
 
 	return (
 		(cardsSet.length === 0) ?

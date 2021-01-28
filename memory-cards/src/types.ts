@@ -1,5 +1,7 @@
 import {actions} from './app/redux/actions/gameFieldActions';
 import {RouterState} from 'connected-react-router';
+import {Store} from 'redux';
+import {History} from 'history';
 
 //store
 export interface IGameFieldState {
@@ -10,6 +12,11 @@ export interface IGameFieldState {
 export interface IAppState {
 	router: RouterState,
 	gameField: IGameFieldState
+}
+
+export interface IMainProps {
+	store: Store<IAppState>,
+	history: History
 }
 
 export interface IDispatchPropsType {

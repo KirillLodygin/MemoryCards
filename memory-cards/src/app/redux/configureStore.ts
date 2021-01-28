@@ -3,7 +3,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {History} from 'history';
 import {routerMiddleware} from 'connected-react-router';
 import logger from 'redux-logger';
-import createRootReducer from './reducers';
+import {createRootReducer} from './reducers';
 
 import {IAppState} from '../../types';
 
