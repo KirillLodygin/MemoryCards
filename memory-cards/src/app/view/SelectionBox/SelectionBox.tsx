@@ -9,7 +9,10 @@ const initialArr: { num: 6 | 10 | 15, name: string }[] = [
 	{num: 15, name: 'Размер поля 6 х 5'}
 ];
 
-export const SelectionBox: React.FC<SelectionBoxProps> = ({cardsSet, createCardsSet}) => {
+export const SelectionBox: React.FC<SelectionBoxProps> = ({
+															  cardsSet,
+															  createCardsSet
+}) => {
 	console.log('SelectionBox');
 
 	return (

@@ -20,7 +20,7 @@ export const Routes:React.FC<IGameFieldState & IDispatchPropsType> = ({
 }) => {
 	return (
 		<Switch>
-			<Route path='/' render={() =>
+			<Route exact path='/' render={() =>
 				<SelectionBox
 					cardsSet={cardsSet}
 					createCardsSet={createCardsSet}
