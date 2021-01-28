@@ -29,6 +29,10 @@ html, body
   margin: 0
   overflow: hidden
   box-sizing: border-box
+  background: #00BB3F
+  display: flex
+  align-items: center
+  justify-content: center
 
   //Game Field
   .game-field
@@ -86,10 +90,11 @@ html, body
 
     .no_match
       color: #333333
+      text-shadow: 1px 2px 2px gray
 
     .math
       color: #FF2800
-      text-shadow: 0 0 1px #FF2800
+      text-shadow: 0 0 7px #FF2800
 
   .hover
     cursor: pointer
@@ -142,4 +147,21 @@ html, body
     flex-direction: column
     justify-content: space-around
     align-items: center
+    font-family: 'RobotoCondensed'
 
+    h1
+      color: #FF2800
+      font-size: 45px
+      font-weight: 900
+      text-shadow: 1px 1px 2px black
+      text-align: center
+
+    .selection-btn
+      font-size: 15px
+      font-weight: bold
+      color: black
+      background: #FF2800
+      box-shadow: 2px 2px 4px rgba(0,0,0,.3)
+      padding: 10px
+      border-radius: 2px
+      cursor: pointer

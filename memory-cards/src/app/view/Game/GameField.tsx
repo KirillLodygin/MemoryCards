@@ -1,5 +1,5 @@
-import React, {ReactElement} from 'react';
-//import {connect} from 'react-redux';\
+import React, {useEffect} from 'react';
+import {GameFieldProps} from '../../../types';
 
 import '../../../index.sass';
 
@@ -18,52 +18,32 @@ const fieldModel = (x: number) => {
 	}
 };
 
-export interface GameFieldProps {
-	cardsSet: { card: string, flip: boolean, win: boolean }[],
-	pair: { card: string, index: number }[],
-	onClick: () => void
-}
-
 export const GameField: React.FC<GameFieldProps> = ({
 														cardsSet,
 														pair,
-														onClick
+														updateGameStory,
+														prepareNextRound
 													}) => {
 
-	const cards: Array<ReactElement<any, any>> = cardsSet.map((card, index) => {
-		return <MemoryCardBlock
-			key={index}
-			card={card.card}
-			flip={card.flip}
-			win={card.win}
-			index={index}
-			pair={pair}
-			cardsAmount={cardsSet.length}
-			onClick={onClick}
-		/>
-	});
+console.log('GameField');
 
 	return (
 		<section
 			className={['game-field', fieldModel(cardsSet.length)].join(' ')}
 		>
-			{cards}
+			{cardsSet.map((card, index) => {
+				return <MemoryCardBlock
+					key={index}
+					cardsSet={cardsSet}
+					card={card.card}
+					isFlip={card.isFlip}
+					isWin={card.isWin}
+					index={index}
+					pair={pair}
+					cardsAmount={cardsSet.length}
+					updateGameStory={updateGameStory}
+				/>
+			})}
 		</section>
 	)
 };
-
-
-/*
-const mapStateToProps = (store) => {
-	return {
-
-	};
-};
-
-const mapDispatchToProps = dispatch => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameField);
-
- */

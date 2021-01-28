@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import {MemoryCardBlock, MemoryCardBlockProps} from '../app/view/Game/MemoryCardBlock';
+import {MemoryCardBlock} from '../app/view/Game/MemoryCardBlock';
+import {MemoryCardBlockProps} from '../types';
 
 export default {
 	title: 'Game/Memory Card Block',
@@ -24,7 +25,7 @@ export const WinCard = Template.bind({});
 WinCard.args = {
 	cardsAmount: 1,
 	card: 'g',
-	flip: true,
+	isFlip: true,
 	index: 0,
 	pair: [
 		{

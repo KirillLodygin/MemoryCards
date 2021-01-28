@@ -1,25 +1,17 @@
 import React from 'react';
-import '../../../index.sass';
+import {MemoryCardBlockProps} from '../../../types'
 
-export interface MemoryCardBlockProps {
-	cardsAmount: number,
-	card: string,
-	flip: boolean,
-	win: boolean,
-	index: number,
-	pair: { card: string, index: number }[],
-	onClick: () => void
-}
 
-export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
-																	cardsAmount,
-																	card,
-																	flip = false,
-																	win = false,
-																	index,
-																	pair = [],
-																	onClick
-																}) => {
+export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = React.memo(({
+																			   cardsSet,
+																			   cardsAmount,
+																			   card,
+																			   isFlip = false,
+																			   isWin = false,
+																			   index,
+																			   pair = [],
+																			   updateGameStory
+																		   }) => {
 	const cardModel = (x: number) => {
 		switch (x) {
 			case 12:
@@ -37,25 +29,25 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
 	};
 
 	const onClickAction = (e: React.MouseEvent) => {
-		if (flip || pair.length === 2) {
+		if (isFlip || pair.length === 2) {
 			e.preventDefault();
 		} else {
-			onClick();
+			updateGameStory(cardsSet, pair, {card, index});
 		}
 	};
 
-	const math = (pair.length === 2) ? pair[0].card === pair[1].card : false;
+	const isMath = (pair.length === 2) ? pair[0].card === pair[1].card : false;
 
 	return (
 		<div
-			className={['memory-card', (flip) ? 'flip' : 'hover', (win) ? 'opacity' : '', cardModel(cardsAmount)].join(' ')}
+			className={['memory-card', (isFlip) ? 'flip' : 'hover', (isWin) ? 'opacity' : '', cardModel(cardsAmount)].join(' ')}
 			onClick={onClickAction}
 		>
-			{(win) ?
+			{(isWin) ?
 				<div className='no-back-face'/> :
 				<div className='back-face'/>
 			}
-			<div className={['front-face', (math) ? 'math' : 'no_math'].join(' ')}>{card}</div>
+			<div className={['front-face', (isMath) ? 'math' : 'no_match'].join(' ')}>{card}</div>
 		</div>
 	);
-};
+});
