@@ -26,14 +26,7 @@ export const GameField: React.FC<GameFieldProps> = ({
 													}) => {
 
 	useEffect(() => {
-		if (pair.length === 2) {
-			let nextRound = (
-				cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-				pair: { card: string, index: number }[]):
-				ReturnType<typeof prepareNextRound> => prepareNextRound(cardsSet, pair);
-
-			setTimeout(nextRound, 600, cardsSet, pair);
-		}
+		if (pair.length === 2) setTimeout(prepareNextRound, 600, cardsSet, pair);
 	});
 
 	return (
