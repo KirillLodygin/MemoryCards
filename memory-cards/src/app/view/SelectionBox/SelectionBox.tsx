@@ -13,8 +13,6 @@ export const SelectionBox: React.FC<SelectionBoxProps> = ({
 															  cardsSet,
 															  createCardsSet
 }) => {
-	console.log('SelectionBox');
-
 	return (
 		(cardsSet.length === 0) ?
 		<div className="selection-box">

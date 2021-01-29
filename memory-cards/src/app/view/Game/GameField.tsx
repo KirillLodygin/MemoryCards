@@ -25,7 +25,6 @@ export const GameField: React.FC<GameFieldProps> = ({
 														prepareNextRound
 													}) => {
 
-console.log('GameField');
 
 	return (
 		<section
