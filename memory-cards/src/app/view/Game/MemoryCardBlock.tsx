@@ -29,6 +29,7 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = React.memo(({
 	};
 
 	const onClickAction = (e: React.MouseEvent) => {
+		console.log('Card clicked!');
 		if (isFlip || pair.length === 2) {
 			e.preventDefault();
 		} else {
