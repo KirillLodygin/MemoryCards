@@ -36,7 +36,7 @@ export const GameField: React.FC<IGameFieldState & IDispatchGameFieldPropsType> 
 
 	return (
 		(cardsSet.length === 0) ?
-			<Redirect to='/game_field'/> :
+			<Redirect to='/'/> :
 
 			<section
 				className={['game-field', fieldModel(cardsSet.length)].join(' ')}

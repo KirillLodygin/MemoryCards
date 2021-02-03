@@ -12,6 +12,8 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = React.memo(({
 																			   cardsAmount,
 																			   updateGameStory
 																		   }) => {
+	console.log('MemoryCardBlock');
+
 	const cardModel = (x: number) => {
 		switch (x) {
 			case 12:
