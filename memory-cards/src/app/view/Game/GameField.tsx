@@ -1,9 +1,15 @@
 import React, {useEffect} from 'react';
-import {GameFieldProps} from '../../../types';
+import {IAppState, IDispatchGameFieldPropsType, IGameFieldState} from '../../../types';
 
 import '../../../index.sass';
 
 import {MemoryCardBlock} from './MemoryCardBlock';
+
+import {actions} from '../../redux/actions/gameFieldActions';
+import {connect} from 'react-redux';
+import {Redirect} from "react-router";
+
+const {updateGameStory, prepareNextRound} = actions;
 
 const fieldModel = (x: number) => {
 	switch (x) {
@@ -18,34 +24,47 @@ const fieldModel = (x: number) => {
 	}
 };
 
-export const GameField: React.FC<GameFieldProps> = ({
+export const GameField: React.FC<IGameFieldState & IDispatchGameFieldPropsType> = ({
 														cardsSet,
-														pair,
+														pair = [],
 														updateGameStory,
 														prepareNextRound
 													}) => {
-
 	useEffect(() => {
-		if (pair.length === 2) setTimeout(prepareNextRound, 600, cardsSet, pair);
+		if (pair.length === 2) setTimeout(prepareNextRound, 650, cardsSet, pair);
 	});
 
 	return (
-		<section
-			className={['game-field', fieldModel(cardsSet.length)].join(' ')}
-		>
-			{cardsSet.map((card, index) => {
-				return <MemoryCardBlock
-					key={index}
-					cardsSet={cardsSet}
-					card={card.card}
-					isFlip={card.isFlip}
-					isWin={card.isWin}
-					index={index}
-					pair={pair}
-					cardsAmount={cardsSet.length}
-					updateGameStory={updateGameStory}
-				/>
-			})}
-		</section>
+		(cardsSet.length === 0) ?
+			<Redirect to='/game_field'/> :
+
+			<section
+				className={['game-field', fieldModel(cardsSet.length)].join(' ')}
+			>
+				{cardsSet.map((card, index) => {
+					return <MemoryCardBlock
+						key={index}
+						cardsSet={cardsSet}
+						card={card.card}
+						isFlip={card.isFlip}
+						isWin={card.isWin}
+						index={index}
+						pair={pair}
+						cardsAmount={cardsSet.length}
+						updateGameStory={updateGameStory}
+					/>
+				})}
+			</section>
 	)
 };
+
+const mapStateToProps = ({ gameField }: IAppState) => ({
+	cardsSet: gameField.cardsSet,
+	pair: gameField.pair
+});
+
+export default connect(mapStateToProps,
+		{
+			updateGameStory,
+			prepareNextRound
+		})(GameField)

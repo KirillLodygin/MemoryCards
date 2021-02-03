@@ -1,7 +1,13 @@
 import React from 'react';
-import { Redirect } from 'react-router'
-import {SelectionBoxProps} from '../../../types';
+import {connect} from 'react-redux';
+import { Redirect } from 'react-router';
+import {IAppState, SelectionBoxProps, IDispatchSelectionBoxPropsType} from '../../../types';
 import {SelectionEl} from './SelectionEl';
+
+import {actions} from '../../redux/actions/gameFieldActions';
+
+
+const {createCardsSet} = actions;
 
 const initialArr: { num: 6 | 10 | 15, name: string }[] = [
 	{num: 6, name: 'Размер поля 4 х 3'},
@@ -9,7 +15,7 @@ const initialArr: { num: 6 | 10 | 15, name: string }[] = [
 	{num: 15, name: 'Размер поля 6 х 5'}
 ];
 
-export const SelectionBox: React.FC<SelectionBoxProps> = ({
+export const SelectionBox: React.FC<SelectionBoxProps  & IDispatchSelectionBoxPropsType> = ({
 															  cardsSet,
 															  createCardsSet
 }) => {
@@ -24,4 +30,13 @@ export const SelectionBox: React.FC<SelectionBoxProps> = ({
 			<Redirect to='/game_field'/>
 	);
 };
+
+const mapStateToProps = ({ gameField }: IAppState) => ({
+	cardsSet: gameField.cardsSet
+});
+
+export default connect(mapStateToProps,
+		{
+			createCardsSet,
+		})(SelectionBox);
 

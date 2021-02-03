@@ -19,11 +19,6 @@ export interface IMainProps {
 	history: History
 }
 
-export interface IDispatchPropsType {
-	createCardsSet: typeof actions.createCardsSet,
-	updateGameStory: typeof actions.updateGameStory,
-	prepareNextRound: typeof actions.prepareNextRound
-}
 
 // Actions
 
@@ -59,9 +54,12 @@ export type ActionsTypes = PropertiesTypes<typeof actions>;
 
 //View
 export type SelectionBoxProps = {
-	createCardsSet: typeof actions.createCardsSet,
 	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
 };
+
+export interface IDispatchSelectionBoxPropsType {
+	createCardsSet: typeof actions.createCardsSet,
+}
 
 export type SelectionElProps = {
 	name: string,
@@ -69,12 +67,10 @@ export type SelectionElProps = {
 	createCardSet: typeof actions.createCardsSet
 };
 
-export type GameFieldProps = {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	pair:{ card: string, index: number }[],
+export interface IDispatchGameFieldPropsType {
 	updateGameStory: typeof actions.updateGameStory,
 	prepareNextRound: typeof actions.prepareNextRound
-};
+}
 
 export type MemoryCardBlockProps = {
 	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],

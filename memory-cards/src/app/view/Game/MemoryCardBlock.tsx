@@ -4,12 +4,12 @@ import {MemoryCardBlockProps} from '../../../types'
 
 export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = React.memo(({
 																			   cardsSet,
-																			   cardsAmount,
 																			   card,
 																			   isFlip = false,
 																			   isWin = false,
 																			   index,
 																			   pair = [],
+																			   cardsAmount,
 																			   updateGameStory
 																		   }) => {
 	const cardModel = (x: number) => {
@@ -29,7 +29,6 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = React.memo(({
 	};
 
 	const onClickAction = (e: React.MouseEvent) => {
-		console.log('Card clicked!');
 		if (isFlip || pair.length === 2) {
 			e.preventDefault();
 		} else {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { GameField } from '../app/view/Game/GameField';
-import { GameFieldProps } from '../types';
+import {IDispatchGameFieldPropsType, IGameFieldState} from '../types';
 import * as MemoryCardBlockStories from './MemoryCardBlock.stories';
 
 import {pickCards} from '../app/utils/createGameField';
@@ -15,7 +15,7 @@ export default {
 	},
 } as Meta;
 
-const Template: Story<GameFieldProps> = args => <GameField {...args} />;
+const Template: Story<IGameFieldState & IDispatchGameFieldPropsType> = args => <GameField {...args} />;
 
 export const SmallField = Template.bind({});
 SmallField.args = {
