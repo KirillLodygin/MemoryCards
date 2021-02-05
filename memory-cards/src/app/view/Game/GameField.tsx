@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {IAppState, IDispatchGameFieldPropsType, IGameFieldState} from '../../../types';
 
 import '../../../index.sass';
@@ -30,8 +30,12 @@ export const GameField: React.FC<IGameFieldState & IDispatchGameFieldPropsType> 
 														updateGameStory,
 														prepareNextRound
 													}) => {
+
 	useEffect(() => {
-		if (pair.length === 2) setTimeout(prepareNextRound, 650, cardsSet, pair);
+		if (pair.length === 2) {
+			console.log("GameField useEffect");
+			setTimeout(prepareNextRound, 350, cardsSet, pair)
+		}
 	});
 
 	return (
