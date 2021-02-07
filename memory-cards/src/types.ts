@@ -1,7 +1,7 @@
-import {actions} from './app/redux/actions/gameFieldActions';
-import {RouterState} from 'connected-react-router';
-import {Store} from 'redux';
-import {History} from 'history';
+import { actions } from './app/redux/actions/gameFieldActions';
+import { RouterState } from 'connected-react-router';
+import { Store } from 'redux';
+import { History } from 'history';
 
 //store
 export interface IGameFieldState {
@@ -17,6 +17,12 @@ export interface IAppState {
 export interface IMainProps {
 	store: Store<IAppState>,
 	history: History
+}
+
+export interface IDispatchPropsType {
+	createCardSet: typeof actions.createCardsSet,
+	updateGameStory: typeof actions.updateGameStory,
+	prepareNextRound: typeof actions.prepareNextRound
 }
 
 
@@ -48,6 +54,7 @@ export type GameActionsType = ICreateCardsSetAction | IUpdateGameStoryAction | I
 
  */
 
+
 type PropertiesTypes<T> = T extends {[key: string]: (...args: any) => infer U} ? U :never;
 export type ActionsTypes = PropertiesTypes<typeof actions>;
 
@@ -55,11 +62,8 @@ export type ActionsTypes = PropertiesTypes<typeof actions>;
 //View
 export type SelectionBoxProps = {
 	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
+	createCardsSet: typeof actions.createCardsSet
 };
-
-export interface IDispatchSelectionBoxPropsType {
-	createCardsSet: typeof actions.createCardsSet,
-}
 
 export type SelectionElProps = {
 	name: string,
@@ -67,7 +71,9 @@ export type SelectionElProps = {
 	createCardSet: typeof actions.createCardsSet
 };
 
-export interface IDispatchGameFieldPropsType {
+export type GameFieldProps = {
+	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
+	pair: { card: string, index: number }[],
 	updateGameStory: typeof actions.updateGameStory,
 	prepareNextRound: typeof actions.prepareNextRound
 }
