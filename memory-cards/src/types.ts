@@ -20,7 +20,7 @@ export interface IMainProps {
 }
 
 export interface IDispatchPropsType {
-	createCardSet: typeof actions.createCardsSet,
+	createCardsSet: typeof actions.createCardsSet,
 	updateGameStory: typeof actions.updateGameStory,
 	prepareNextRound: typeof actions.prepareNextRound
 }

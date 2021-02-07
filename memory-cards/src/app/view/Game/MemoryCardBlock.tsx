@@ -1,7 +1,6 @@
 import React from 'react';
 import {MemoryCardBlockProps} from '../../../types'
 
-
 export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
 																			   cardsSet,
 																			   card,
