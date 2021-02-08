@@ -4,6 +4,8 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import {MemoryCardBlock} from '../app/view/Game/MemoryCardBlock';
 import {MemoryCardBlockProps} from '../types';
 
+import {pickCards} from '../app/utils/createGameField';
+
 export default {
 	title: 'Game/Memory Card Block',
 	component: MemoryCardBlock,
@@ -16,7 +18,7 @@ const Template: Story<MemoryCardBlockProps> = (args) => <MemoryCardBlock {...arg
 
 export const TestCard = Template.bind({});
 TestCard.args = {
-	cardsAmount: 1,
+	cardsSet: pickCards(6),
 	card: 'f',
 	index: 1
 };

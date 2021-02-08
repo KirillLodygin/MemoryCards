@@ -5,8 +5,7 @@ import { History } from 'history';
 
 //store
 export interface IGameFieldState {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	pair: { card: string, index: number }[]
+	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[]
 }
 
 export interface IAppState {
@@ -27,34 +26,6 @@ export interface IDispatchPropsType {
 
 
 // Actions
-
-/*
-interface ICreateCardsSetAction {
-	type: typeof UPDATE_CARD_SET,
-	payload: { card: string, isFlip: boolean, isWin: boolean }[]
-}
-
-interface IUpdateGameStoryAction {
-	type: typeof UPDATE_GAME_STORY,
-	payload: {
-		cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-		pair:{ card: string, index: number }[]
-	}
-}
-
-interface IPrepareNextRoundAction {
-	type: typeof PREPARE_NEXT_ROUND,
-	payload: {
-		cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-		pair: []
-	}
-}
-
-export type GameActionsType = ICreateCardsSetAction | IUpdateGameStoryAction | IPrepareNextRoundAction;
-
- */
-
-
 type PropertiesTypes<T> = T extends {[key: string]: (...args: any) => infer U} ? U :never;
 export type ActionsTypes = PropertiesTypes<typeof actions>;
 
@@ -73,18 +44,15 @@ export type SelectionElProps = {
 
 export type GameFieldProps = {
 	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	pair: { card: string, index: number }[],
 	updateGameStory: typeof actions.updateGameStory,
 	prepareNextRound: typeof actions.prepareNextRound
 }
 
 export type MemoryCardBlockProps = {
 	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	cardsAmount: number,
 	card: string,
 	isFlip: boolean,
 	isWin: boolean,
 	index: number,
-	pair: { card: string, index: number }[],
 	updateGameStory: typeof actions.updateGameStory
 }

@@ -11,7 +11,6 @@ const {createCardsSet, updateGameStory, prepareNextRound} = actions;
 
 const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 																	cardsSet,
-																	pair,
 																	createCardsSet,
 																	updateGameStory,
 																	prepareNextRound
@@ -28,7 +27,6 @@ const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 			<Route path='/game_field' render={() =>
 				<GameField
 					cardsSet={cardsSet}
-					pair={pair}
 					updateGameStory={updateGameStory}
 					prepareNextRound={prepareNextRound}
 				/>}
@@ -38,8 +36,7 @@ const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 };
 
 const mapStateToProps = ({ gameField }: IAppState) => ({
-	cardsSet: gameField.cardsSet,
-	pair: gameField.pair
+	cardsSet: gameField.cardsSet
 });
 
 export default connect(mapStateToProps,

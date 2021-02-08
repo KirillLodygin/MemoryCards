@@ -1,18 +1,14 @@
+import {coincidence} from './coincidence';
+
 export const nextRound = (
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	pair: { card: string, index: number }[]
-):  {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	pair: { card: string, index: number }[]
-} => {
-	pair.forEach((item) => {
-		(pair[0].card === pair[1].card) ? cardsSet[item.index].isWin = true : cardsSet[item.index].isFlip = false;
-	});
-
-	pair = [];
-
-	return {
-		cardsSet,
-		pair
-	};
+	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[]
+): { card: string, isFlip: boolean, isWin: boolean }[] => {
+	(coincidence(cardsSet)) ?
+		cardsSet.forEach((item) => {
+			if(item.isFlip) item.isWin = true;
+		}) :
+		cardsSet.forEach((item) => {
+			if(item.isFlip) item.isFlip = false;
+		});
+	return cardsSet
 };
