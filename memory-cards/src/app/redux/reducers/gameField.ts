@@ -2,8 +2,7 @@ import {IGameFieldState, ActionsTypes, } from '../../../types';
 
 const initialState: IGameFieldState = {
 	cardsSet: [],
-	pair: [],
-	counter: 0
+	pair: []
 };
 
 export const gameField = (state = initialState, action: ActionsTypes): IGameFieldState => {
@@ -17,8 +16,8 @@ export const gameField = (state = initialState, action: ActionsTypes): IGameFiel
 		case 'CLEAR_PAIR_ARR':
 			return {...state, pair: action.payload};
 
-		case 'INCREASE_COUNTER':
-			return {...state, counter: action.payload};
+		case 'CLEAR_GAME_FIELD':
+			return {...state, cardsSet: action.payload.cardsSet, pair: action.payload.pair};
 
 		default:
 			return state;

@@ -6,8 +6,7 @@ import { History } from 'history';
 //store
 export interface IGameFieldState {
 	cardsSet: Array<string>,
-	pair: Array<string>,
-	counter: number
+	pair: Array<string>
 }
 
 export interface IAppState {
@@ -24,7 +23,7 @@ export interface IDispatchPropsType {
 	createCardsSet: typeof actions.createCardsSet,
 	updatePairArr: typeof actions.updatePairArr,
 	clearPairArr: typeof actions.clearPairArr,
-	increaseCounter: typeof actions.increaseCounter
+	clearGameField: typeof actions.clearGameField
 }
 
 
@@ -48,10 +47,8 @@ export type SelectionElProps = {
 export type GameFieldProps = {
 	cardsSet: Array<string>,
 	pair: Array<string>,
-	counter: number,
 	updatePairArr: typeof actions.updatePairArr,
-	clearPairArr: typeof actions.clearPairArr,
-	increaseCounter: typeof actions.increaseCounter
+	clearPairArr: typeof actions.clearPairArr
 }
 
 export type MemoryCardBlockProps = {
@@ -59,4 +56,8 @@ export type MemoryCardBlockProps = {
 	cardSetSize: number,
 	pair: Array<string>,
 	updatePairArr: typeof actions.updatePairArr
+}
+
+export type EndOfTheGameProps = {
+	clearGameField: typeof actions.clearGameField
 }

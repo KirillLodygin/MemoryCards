@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GameFieldProps } from '../../../types';
 import { MemoryCardBlock } from './MemoryCardBlock';
 import { Redirect } from "react-router";
@@ -21,19 +21,19 @@ const fieldModel = (x: number) => {
 export const GameField: React.FC<GameFieldProps> = ({
 														cardsSet,
 														pair,
-														counter,
 														updatePairArr,
 														clearPairArr,
-														increaseCounter
 													}) => {
-	if (pair.length === 2) {
-		if (pair[0] === pair[1]) {
-			counter += 1;
-			increaseCounter(counter);
-		}
+	const [counter, setCounter] = useState(0);
 
-		setTimeout(clearPairArr, 1100, []);
-	}
+	useEffect(() => {
+		if(pair.length === 2) {
+			if(pair[0] === pair[1]){
+				setTimeout(setCounter, 1000,counter + 1);
+			}
+			setTimeout(clearPairArr, 1100, []);
+		}
+	}, [pair]); // eslint-disable-line
 
 	return (
 		(cardsSet.length === 0) ?

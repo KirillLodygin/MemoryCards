@@ -26,12 +26,16 @@ export const actions = {
 		} as const
 	),
 
-	increaseCounter: (
-		counter: number
+	clearGameField: (
+		cardsSet: Array<string>,
+		pair: Array<string>
 	) => (
 		{
-			type: 'INCREASE_COUNTER',
-			payload: counter
+			type: 'CLEAR_GAME_FIELD',
+			payload: {
+				cardsSet,
+				pair
+			}
 		} as const
 	)
 };

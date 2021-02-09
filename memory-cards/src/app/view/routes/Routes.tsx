@@ -8,16 +8,15 @@ import {GameField} from '../Game/GameField';
 import {SelectionBox} from '../SelectionBox/SelectionBox';
 import {EndOfTheGame} from '../End/EndOfTheGame';
 
-const {createCardsSet, updatePairArr, clearPairArr, increaseCounter} = actions;
+const {createCardsSet, updatePairArr, clearPairArr, clearGameField} = actions;
 
 const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 																	cardsSet,
 																	pair,
-																	counter,
 																	createCardsSet,
 																	updatePairArr,
 																	clearPairArr,
-																	increaseCounter
+																	clearGameField
 																}) => {
 	return (
 		<Switch>
@@ -32,22 +31,22 @@ const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 				<GameField
 					cardsSet={cardsSet}
 					pair={pair}
-					counter={counter}
 					updatePairArr={updatePairArr}
 					clearPairArr={clearPairArr}
-					increaseCounter={increaseCounter}
 				/>}
 			/>
 
-			<Route path='/end_of_the_game' render={() => <EndOfTheGame/>}/>
+			<Route path='/end_of_the_game' render={() =>
+				<EndOfTheGame
+					clearGameField={clearGameField}
+				/>}/>
 		</Switch>
 	);
 };
 
 const mapStateToProps = ({ gameField }: IAppState) => ({
 	cardsSet: gameField.cardsSet,
-	pair: gameField.pair,
-	counter: gameField.counter
+	pair: gameField.pair
 });
 
 export default connect(mapStateToProps,
@@ -55,5 +54,5 @@ export default connect(mapStateToProps,
 		createCardsSet,
 		updatePairArr,
 		clearPairArr,
-		increaseCounter
+		clearGameField
 	})(Routes);

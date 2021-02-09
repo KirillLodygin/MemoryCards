@@ -21,7 +21,6 @@ export const SmallField = Template.bind({});
 SmallField.args = {
 	cardsSet: pickCards(6),
 	pair: [],
-	counter: 0,
 	...MemoryCardBlockStories.CardOnField.args
 };
 
@@ -29,7 +28,6 @@ export const MediumField = Template.bind({});
 MediumField.args = {
 	cardsSet:pickCards(10),
 	pair: [],
-	counter: 0,
 	...MemoryCardBlockStories.CardOnField.args
 };
 
@@ -37,6 +35,5 @@ export const LargeField = Template.bind({});
 LargeField.args = {
 	cardsSet: pickCards(15),
 	pair: [],
-	counter: 0,
 	...MemoryCardBlockStories.CardOnField.args
 };
