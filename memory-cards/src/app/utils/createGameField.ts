@@ -6,7 +6,7 @@ const shuffle = (arr: Array<string>): Array<string> => {
 	return arr;
 };
 
-export const pickCards = (index: 6 | 10 | 15, test: boolean = false): { card: string, isFlip: boolean, isWin: boolean }[] => {
+export const pickCards = (index: 6 | 10 | 15): Array<string> => {
 	let cards = ['A', 'H', 'd', 'f', 'g', 'h', 'i', 'l', 'o', 'e', 's', 'v', 'x', 'y', 'z'];
 	let gameCards: Array<string> = [];
 
@@ -15,7 +15,5 @@ export const pickCards = (index: 6 | 10 | 15, test: boolean = false): { card: st
 		if (gameCards.indexOf(cards[i]) === -1) gameCards.push(cards[i]);
 	}
 
-	return shuffle(gameCards.concat(gameCards)).map((item: string) => {
-		return (test) ? {card: item, isFlip: true, isWin: false} : {card: item, isFlip: false, isWin: false}
-	});
+	return shuffle(gameCards.concat(gameCards));
 };

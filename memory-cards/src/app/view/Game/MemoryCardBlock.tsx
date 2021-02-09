@@ -1,48 +1,39 @@
-import React from 'react';
-import {MemoryCardBlockProps} from '../../../types'
-import {twoCardsOpen} from '../../utils/twoCardsOpen';
-import {coincidence} from '../../utils/coincidence';
-
+import React, { useState, useEffect } from 'react';
+import { MemoryCardBlockProps } from '../../../types'
+import { cardModel } from "../../utils/cardModel";
 
 export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
-																	cardsSet,
 																	card,
-																	isFlip = false,
-																	isWin = false,
-																	index,
-																	updateGameStory
+																	cardSetSize,
+																	pair,
+																	updatePairArr
 																}) => {
 	console.log('!!!');
+	const [isFlip, setIsFlip] = useState(false);
+	const [isMath, setIsMath] = useState(false);
+	const [isWin, setIsWin] = useState(false);
 
-	const cardModel = (x: number) => {
-		switch (x) {
-			case 12:
-				return 's-card';
-
-			case 20:
-				return 'm-card';
-
-			case 30:
-				return 'l-card';
-
-			default:
-				return 'test-card'
+	useEffect(() => {
+		if(pair.length === 2 && pair[0] === pair[1] && pair[0] === card) {
+			setIsMath(true);
+			setTimeout(setIsWin, 700, true);
 		}
-	};
+	});
+
+
 
 	const onClickAction = (e: React.MouseEvent) => {
-		if (isFlip || twoCardsOpen(cardsSet)) {
+		if (isFlip || pair.length === 2) {
 			e.preventDefault();
 		} else {
-			updateGameStory(cardsSet, index);
+			setIsFlip(true);
+			updatePairArr(pair.concat([card]));
 		}
 	};
-
-	const isMath = coincidence(cardsSet);
 
 	return (
 		<div
-			className={['memory-card', (isFlip) ? 'flip' : 'hover', (isWin) ? 'opacity' : '', cardModel(cardsSet.length)].join(' ')}
+			className={['memory-card', (isFlip) ? 'flip' : 'hover', (isWin) ? 'opacity' : '', cardModel(cardSetSize)].join(' ')}
 			onClick={onClickAction}
 		>
 			{(isWin) ?

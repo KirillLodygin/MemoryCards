@@ -1,8 +1,7 @@
-import React, {ReactElement, useEffect} from 'react';
-import {GameFieldProps, MemoryCardBlockProps} from '../../../types';
-import {MemoryCardBlock} from './MemoryCardBlock';
-import {Redirect} from "react-router";
-import {twoCardsOpen} from '../../utils/twoCardsOpen';
+import React, { useEffect } from 'react';
+import { GameFieldProps } from '../../../types';
+import { MemoryCardBlock } from './MemoryCardBlock';
+import { Redirect } from "react-router";
 
 import '../../../index.sass';
 
@@ -21,33 +20,57 @@ const fieldModel = (x: number) => {
 
 export const GameField: React.FC<GameFieldProps> = ({
 														cardsSet,
-														updateGameStory,
-														prepareNextRound
+														pair,
+														counter,
+														updatePairArr,
+														clearPairArr,
+														increaseCounter
 													}) => {
 	useEffect(() => {
-		if(twoCardsOpen(cardsSet)) setTimeout(prepareNextRound, 1000, cardsSet);
+		if (pair.length === 2) {
+			if (pair[0] === pair[1]) {
+				counter += 1;
+				increaseCounter(counter);
+			}
+
+			setTimeout(clearPairArr, 1100, []);
+		}
 	});
 
+	/*
 	const cards: ReactElement<MemoryCardBlockProps>[] = cardsSet.map((card, index) => {
 		return <MemoryCardBlock
 			key={index}
-			cardsSet={cardsSet}
-			card={card.card}
-			isFlip={card.isFlip}
-			isWin={card.isWin}
-			index={index}
-			updateGameStory={updateGameStory}
+			card={card}
+			cardSetSize={cardsSet.length}
+			pair={pair}
+			updatePairArr={updatePairArr}
 		/>
 	});
+
+	 */
 
 	return (
 		(cardsSet.length === 0) ?
 			<Redirect to='/'/> :
 
-			<section
-				className={['game-field', fieldModel(cardsSet.length)].join(' ')}
-			>
-				{cards}
-			</section>
+			(cardsSet.length === counter * 2) ?
+				<Redirect to='/end_of_the_game'/> :
+
+				<section
+					className={['game-field', fieldModel(cardsSet.length)].join(' ')}
+				>
+					{
+						cardsSet.map((card, index) => {
+							return <MemoryCardBlock
+								key={index}
+								card={card}
+								cardSetSize={cardsSet.length}
+								pair={pair}
+								updatePairArr={updatePairArr}
+							/>
+						})
+					}
+				</section>
 	)
 };

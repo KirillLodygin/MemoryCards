@@ -6,14 +6,18 @@ import { actions } from '../../redux/actions/gameFieldActions';
 
 import {GameField} from '../Game/GameField';
 import {SelectionBox} from '../SelectionBox/SelectionBox';
+import {EndOfTheGame} from '../End/EndOfTheGame';
 
-const {createCardsSet, updateGameStory, prepareNextRound} = actions;
+const {createCardsSet, updatePairArr, clearPairArr, increaseCounter} = actions;
 
 const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 																	cardsSet,
+																	pair,
+																	counter,
 																	createCardsSet,
-																	updateGameStory,
-																	prepareNextRound
+																	updatePairArr,
+																	clearPairArr,
+																	increaseCounter
 																}) => {
 	return (
 		<Switch>
@@ -27,21 +31,29 @@ const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 			<Route path='/game_field' render={() =>
 				<GameField
 					cardsSet={cardsSet}
-					updateGameStory={updateGameStory}
-					prepareNextRound={prepareNextRound}
+					pair={pair}
+					counter={counter}
+					updatePairArr={updatePairArr}
+					clearPairArr={clearPairArr}
+					increaseCounter={increaseCounter}
 				/>}
 			/>
+
+			<Route path='/end_of_the_game' render={() => <EndOfTheGame/>}/>
 		</Switch>
 	);
 };
 
 const mapStateToProps = ({ gameField }: IAppState) => ({
-	cardsSet: gameField.cardsSet
+	cardsSet: gameField.cardsSet,
+	pair: gameField.pair,
+	counter: gameField.counter
 });
 
 export default connect(mapStateToProps,
 	{
 		createCardsSet,
-		updateGameStory,
-		prepareNextRound
+		updatePairArr,
+		clearPairArr,
+		increaseCounter
 	})(Routes);

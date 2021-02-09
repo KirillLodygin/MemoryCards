@@ -5,7 +5,9 @@ import { History } from 'history';
 
 //store
 export interface IGameFieldState {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[]
+	cardsSet: Array<string>,
+	pair: Array<string>,
+	counter: number
 }
 
 export interface IAppState {
@@ -20,8 +22,9 @@ export interface IMainProps {
 
 export interface IDispatchPropsType {
 	createCardsSet: typeof actions.createCardsSet,
-	updateGameStory: typeof actions.updateGameStory,
-	prepareNextRound: typeof actions.prepareNextRound
+	updatePairArr: typeof actions.updatePairArr,
+	clearPairArr: typeof actions.clearPairArr,
+	increaseCounter: typeof actions.increaseCounter
 }
 
 
@@ -32,7 +35,7 @@ export type ActionsTypes = PropertiesTypes<typeof actions>;
 
 //View
 export type SelectionBoxProps = {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
+	cardsSet: Array<string>,
 	createCardsSet: typeof actions.createCardsSet
 };
 
@@ -43,16 +46,17 @@ export type SelectionElProps = {
 };
 
 export type GameFieldProps = {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-	updateGameStory: typeof actions.updateGameStory,
-	prepareNextRound: typeof actions.prepareNextRound
+	cardsSet: Array<string>,
+	pair: Array<string>,
+	counter: number,
+	updatePairArr: typeof actions.updatePairArr,
+	clearPairArr: typeof actions.clearPairArr,
+	increaseCounter: typeof actions.increaseCounter
 }
 
 export type MemoryCardBlockProps = {
-	cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
 	card: string,
-	isFlip: boolean,
-	isWin: boolean,
-	index: number,
-	updateGameStory: typeof actions.updateGameStory
+	cardSetSize: number,
+	pair: Array<string>,
+	updatePairArr: typeof actions.updatePairArr
 }

@@ -1,6 +1,4 @@
 import {pickCards} from '../../utils/createGameField';
-import {nextRound} from '../../utils/nextRound';
-import {updateGameStory} from "../../utils/updateGameStory";
 
 export const actions = {
 	createCardsSet: (version: 6 | 10 | 15) => (
@@ -10,22 +8,30 @@ export const actions = {
 		} as const
 	),
 
-	updateGameStory: (
-		cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-		index: number
+	updatePairArr: (
+		pair: Array<string>
 		) => (
 		{
-			type: 'UPDATE_GAME_STORY',
-			payload: updateGameStory(cardsSet, index)
+			type: 'UPDATE_PAIR_ARR',
+			payload: pair
 		} as const
 	),
 
-	prepareNextRound: (
-		cardsSet: { card: string, isFlip: boolean, isWin: boolean }[],
-		pair:{ card: string, index: number }[]) => (
+	clearPairArr: (
+		pair: Array<string>
+	) => (
 		{
-			type: 'PREPARE_NEXT_ROUND',
-			payload: nextRound(cardsSet)
+			type: 'CLEAR_PAIR_ARR',
+			payload: pair
+		} as const
+	),
+
+	increaseCounter: (
+		counter: number
+	) => (
+		{
+			type: 'INCREASE_COUNTER',
+			payload: counter
 		} as const
 	)
 };
