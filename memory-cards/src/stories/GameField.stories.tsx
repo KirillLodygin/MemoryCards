@@ -20,35 +20,23 @@ const Template: Story<GameFieldProps> = args => <GameField {...args} />;
 export const SmallField = Template.bind({});
 SmallField.args = {
 	cardsSet: pickCards(6),
+	pair: [],
+	counter: 0,
 	...MemoryCardBlockStories.CardOnField.args
 };
 
 export const MediumField = Template.bind({});
 MediumField.args = {
 	cardsSet:pickCards(10),
+	pair: [],
+	counter: 0,
 	...MemoryCardBlockStories.CardOnField.args
 };
 
 export const LargeField = Template.bind({});
 LargeField.args = {
 	cardsSet: pickCards(15),
-	...MemoryCardBlockStories.CardOnField.args
-};
-
-export const CreatedSmallField = Template.bind({});
-CreatedSmallField.args = {
-	cardsSet: pickCards(6, true),
-	...MemoryCardBlockStories.CardOnField.args
-};
-
-export const CreatedMediumField = Template.bind({});
-CreatedMediumField.args = {
-	cardsSet: pickCards(10, true),
-	...MemoryCardBlockStories.CardOnField.args
-};
-
-export const CreatedLargeField = Template.bind({});
-CreatedLargeField.args = {
-	cardsSet: pickCards(15, true),
+	pair: [],
+	counter: 0,
 	...MemoryCardBlockStories.CardOnField.args
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { GameFieldProps } from '../../../types';
 import { MemoryCardBlock } from './MemoryCardBlock';
 import { Redirect } from "react-router";
@@ -26,29 +26,14 @@ export const GameField: React.FC<GameFieldProps> = ({
 														clearPairArr,
 														increaseCounter
 													}) => {
-	useEffect(() => {
-		if (pair.length === 2) {
-			if (pair[0] === pair[1]) {
-				counter += 1;
-				increaseCounter(counter);
-			}
-
-			setTimeout(clearPairArr, 1100, []);
+	if (pair.length === 2) {
+		if (pair[0] === pair[1]) {
+			counter += 1;
+			increaseCounter(counter);
 		}
-	});
 
-	/*
-	const cards: ReactElement<MemoryCardBlockProps>[] = cardsSet.map((card, index) => {
-		return <MemoryCardBlock
-			key={index}
-			card={card}
-			cardSetSize={cardsSet.length}
-			pair={pair}
-			updatePairArr={updatePairArr}
-		/>
-	});
-
-	 */
+		setTimeout(clearPairArr, 1100, []);
+	}
 
 	return (
 		(cardsSet.length === 0) ?

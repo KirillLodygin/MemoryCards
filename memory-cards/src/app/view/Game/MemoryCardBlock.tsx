@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MemoryCardBlockProps } from '../../../types'
 import { cardModel } from "../../utils/cardModel";
 
@@ -13,14 +13,10 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
 	const [isMath, setIsMath] = useState(false);
 	const [isWin, setIsWin] = useState(false);
 
-	useEffect(() => {
-		if(pair.length === 2 && pair[0] === pair[1] && pair[0] === card) {
-			setIsMath(true);
-			setTimeout(setIsWin, 700, true);
-		}
-	});
-
-
+	if(pair.length === 2 && pair[0] === pair[1] && pair[0] === card) {
+		setIsMath(true);
+		setTimeout(setIsWin, 700, true);
+	}
 
 	const onClickAction = (e: React.MouseEvent) => {
 		if (isFlip || pair.length === 2) {
