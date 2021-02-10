@@ -21,8 +21,7 @@ const fieldModel = (x: number) => {
 export const GameField: React.FC<GameFieldProps> = ({
 														cardsSet,
 														pair,
-														updatePairArr,
-														clearPairArr,
+														updatePairArr
 													}) => {
 	const [counter, setCounter] = useState(0);
 
@@ -31,7 +30,7 @@ export const GameField: React.FC<GameFieldProps> = ({
 			if(pair[0] === pair[1]){
 				setTimeout(setCounter, 1000,counter + 1);
 			}
-			setTimeout(clearPairArr, 1100, []);
+			setTimeout(updatePairArr, 1100, []);
 		}
 	}, [pair]); // eslint-disable-line
 

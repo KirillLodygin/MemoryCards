@@ -22,7 +22,6 @@ export interface IMainProps {
 export interface IDispatchPropsType {
 	createCardsSet: typeof actions.createCardsSet,
 	updatePairArr: typeof actions.updatePairArr,
-	clearPairArr: typeof actions.clearPairArr,
 	clearGameField: typeof actions.clearGameField
 }
 
@@ -47,8 +46,7 @@ export type SelectionElProps = {
 export type GameFieldProps = {
 	cardsSet: Array<string>,
 	pair: Array<string>,
-	updatePairArr: typeof actions.updatePairArr,
-	clearPairArr: typeof actions.clearPairArr
+	updatePairArr: typeof actions.updatePairArr
 }
 
 export type MemoryCardBlockProps = {

@@ -13,9 +13,6 @@ export const gameField = (state = initialState, action: ActionsTypes): IGameFiel
 		case 'UPDATE_PAIR_ARR':
 			return {...state, pair: action.payload};
 
-		case 'CLEAR_PAIR_ARR':
-			return {...state, pair: action.payload};
-
 		case 'CLEAR_GAME_FIELD':
 			return {...state, cardsSet: action.payload.cardsSet, pair: action.payload.pair};
 

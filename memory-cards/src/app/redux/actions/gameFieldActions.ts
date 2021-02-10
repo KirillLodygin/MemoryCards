@@ -17,14 +17,6 @@ export const actions = {
 		} as const
 	),
 
-	clearPairArr: (
-		pair: Array<string>
-	) => (
-		{
-			type: 'CLEAR_PAIR_ARR',
-			payload: pair
-		} as const
-	),
 
 	clearGameField: (
 		cardsSet: Array<string>,

@@ -8,14 +8,13 @@ import {GameField} from '../Game/GameField';
 import {SelectionBox} from '../SelectionBox/SelectionBox';
 import {EndOfTheGame} from '../End/EndOfTheGame';
 
-const {createCardsSet, updatePairArr, clearPairArr, clearGameField} = actions;
+const {createCardsSet, updatePairArr, clearGameField} = actions;
 
 const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 																	cardsSet,
 																	pair,
 																	createCardsSet,
 																	updatePairArr,
-																	clearPairArr,
 																	clearGameField
 																}) => {
 	return (
@@ -32,7 +31,6 @@ const Routes: React.FC<IGameFieldState & IDispatchPropsType> = ({
 					cardsSet={cardsSet}
 					pair={pair}
 					updatePairArr={updatePairArr}
-					clearPairArr={clearPairArr}
 				/>}
 			/>
 
@@ -53,6 +51,5 @@ export default connect(mapStateToProps,
 	{
 		createCardsSet,
 		updatePairArr,
-		clearPairArr,
 		clearGameField
 	})(Routes);

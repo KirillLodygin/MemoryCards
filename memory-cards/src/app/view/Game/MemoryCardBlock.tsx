@@ -8,7 +8,6 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
 																	pair,
 																	updatePairArr
 																}) => {
-	console.log('!!!');
 	const [isFlip, setIsFlip] = useState(false);
 	const [isMath, setIsMath] = useState(false);
 	const [isWin, setIsWin] = useState(false);
@@ -22,7 +21,7 @@ export const MemoryCardBlock: React.FC<MemoryCardBlockProps> = ({
 		if(pair.length === 2 && pair[0] !== pair[1]) {
 			setTimeout(setIsFlip, 800, false);
 		}
-	}, [pair, card]);
+	}, [pair]); // eslint-disable-line
 
 	const onClickAction = (e: React.MouseEvent) => {
 		if (isFlip || pair.length === 2) {
