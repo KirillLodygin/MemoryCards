@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GameFieldProps } from '../../../types';
 import { MemoryCardBlock } from './MemoryCardBlock';
-import { Redirect } from "react-router";
+import { Redirect } from 'react-router';
 
 import '../../../index.sass';
 
@@ -32,16 +32,15 @@ export const GameField: React.FC<GameFieldProps> = ({
 			}
 			setTimeout(updatePairArr, 1100, []);
 		}
+
 	}, [pair]); // eslint-disable-line
 
 	return (
 		(cardsSet.length === 0) ?
 			<Redirect to='/'/> :
 
-			(cardsSet.length === counter * 2) ?
-				<Redirect to='/end_of_the_game'/> :
-
-				<section
+			(cardsSet.length !== counter * 2) ?
+				(<section
 					className={['game-field', fieldModel(cardsSet.length)].join(' ')}
 				>
 					{
@@ -55,6 +54,7 @@ export const GameField: React.FC<GameFieldProps> = ({
 							/>
 						})
 					}
-				</section>
+				</section>) :
+				<Redirect to='/end_of_the_game'/>
 	)
 };
