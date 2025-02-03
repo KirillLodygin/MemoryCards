@@ -23,7 +23,7 @@
   "plugins": [
     "@typescript-eslint",
     "eslint-plugin-prettier",
-    "eslint-plugin-unicorn" ,
+//    "eslint-plugin-unicorn" ,
     "eslint-plugin-import"
   ]
 }

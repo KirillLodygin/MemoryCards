@@ -15,6 +15,7 @@ export default function configureStore(
 		createRootReducer(history),
 		initialState,
 		composeWithDevTools(
+			// @ts-ignore
 			applyMiddleware(logger, routerMiddleware(history))
 		)
 	);
